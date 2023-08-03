@@ -35,17 +35,6 @@ The application is powered by CommerceTools 🌐, a leading provider of commerce
 - [editorconfig](https://editorconfig.org/)
 - JS/TS native fetch get/post/put/delete [helpers](./src/common/request.ts)
 
-## Checklist
-
-When you use this template, try follow the checklist to update your info properly
-
-- [ ] Rename `name` and `author` fields in `package.json`
-- [ ] Change the author name in `LICENSE`
-- [ ] Change the title in `index.html`
-- [ ] Change the favicon and logo in `src/assets`
-- [ ] Remove dummy code and components
-- [ ] Clean up the README's
-
 ## Available Scripts
 
 In the project directory, you can run:
@@ -58,15 +47,13 @@ In the project directory, you can run:
 
 ##### `yarn lint`
 
-##### `yarn lint:ts`
-
-##### `yarn lint:eslint`
-
-##### `yarn format:ts`
+##### `yarn lint:fix`
 
 ##### `yarn format`
 
-##### `yarn format:check`
+##### `yarn compile`
+
+##### `yarn prepare`
 
 ##### `yarn test`
 
