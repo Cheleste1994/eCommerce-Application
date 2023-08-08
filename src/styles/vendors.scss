@@ -1,3 +1,47 @@
-@import 'antd/dist/reset.css';
-@import 'bootstrap/dist/css/bootstrap-reboot.css';
-@import 'bootstrap/dist/css/bootstrap-grid.css';
+// @import 'antd/dist/reset.css';
+// @import 'bootstrap/dist/css/bootstrap-reboot.css';
+// @import 'bootstrap/dist/css/bootstrap-grid.css';
+@import "bootstrap/scss/bootstrap";
+
+
+$primary-color: #dadada3a;
+$title-color: #ff9100;
+$wrapper-padding: 20px;
+
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $primary-color;
+  padding: $wrapper-padding;
+
+  .title {
+    display: flex;
+    flex-direction: column;
+    * {
+      margin: 0;
+    }
+    h1 {
+      color: $title-color;
+    }
+    span {
+      font-size: 1.5rem;
+    }
+  }
+
+  .btn {
+    border-color: $title-color;
+    color: #000;
+  }
+
+  .btn:hover {
+    background-color: $title-color;
+    border-color: $title-color;
+    color: #fff;
+  }
+
+  .dropdown-menu {
+    min-width: 300px;
+  }
+}
