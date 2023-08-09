@@ -1,13 +1,11 @@
 // @import 'antd/dist/reset.css';
 // @import 'bootstrap/dist/css/bootstrap-reboot.css';
 // @import 'bootstrap/dist/css/bootstrap-grid.css';
-@import "bootstrap/scss/bootstrap";
-
+@import 'bootstrap/scss/bootstrap';
 
 $primary-color: #dadada3a;
 $title-color: #ff9100;
 $wrapper-padding: 20px;
-
 
 .header {
   display: flex;
@@ -28,6 +26,10 @@ $wrapper-padding: 20px;
     span {
       font-size: 1.5rem;
     }
+  }
+
+  .search {
+    width: 40%;
   }
 
   .btn {
