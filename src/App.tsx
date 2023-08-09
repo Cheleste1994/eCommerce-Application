@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Router from './routes';
 import Login from './components/partials/login';
+import Cart from './components/partials/cart/index';
 import './styles/vendors.scss';
 
 const App = () => (
@@ -27,6 +28,7 @@ const App = () => (
         </div>
       </nav>
       <Login />
+      <Cart count={0} />
       <ul>
         <li>
           <Link to="/">Home</Link>
