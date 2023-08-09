@@ -28,7 +28,9 @@ const App = () => (
         </div>
       </nav>
       <Login />
-      <Cart count={2} />
+      <div className="cart">
+        <Cart count={2} />
+      </div>
       <ul>
         <li>
           <Link to="/">Home</Link>

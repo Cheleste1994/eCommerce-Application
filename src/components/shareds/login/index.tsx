@@ -1,6 +1,6 @@
 import React from 'react';
-// eslint-disable-next-line import/extensions
-import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import 'bootstrap/dist/js/bootstrap.bundle.min';
+import { Link } from 'react-router-dom';
 
 const Login = () => (
   <div className="login">
@@ -20,7 +20,7 @@ const Login = () => (
             Email address
             <input
               type="email"
-              className="form-control"
+              className="form-control is-invalid"
               id="formEmail"
               placeholder="email@example.com"
             />
@@ -49,12 +49,12 @@ const Login = () => (
           Sign in
         </button>
         <div className="dropdown-divider" />
-        <a className="dropdown-item" href="/">
+        <Link to="/registration" className="dropdown-item">
           New around here? Sign up
-        </a>
-        <a className="dropdown-item" href="/">
+        </Link>
+        <Link to="/reset" className="dropdown-item">
           Forgot password?
-        </a>
+        </Link>
       </form>
     </div>
   </div>
