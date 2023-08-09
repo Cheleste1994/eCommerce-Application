@@ -24,6 +24,7 @@ The application is powered by CommerceTools 🌐, a leading provider of commerce
 ```bash
 
 yarn # If you don't have yarn installed, run: npm install -g yarn
+yarn prepare
 
 ```
 
