@@ -2,9 +2,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  align-self: center;
   width: 100%;
+  min-height: 100vh;
 
   .registration__form {
-    width: 40%;
+    width: 50%;
+    max-width: 900px;
   }
 }

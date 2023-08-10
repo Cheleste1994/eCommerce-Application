@@ -6,7 +6,7 @@ import Cart from './components/shareds/cart/index';
 import './styles/vendors.scss';
 
 const App = () => (
-  <main className="main">
+  <>
     <header className="header">
       <div className="title">
         <h1>7754.by</h1>
@@ -40,8 +40,10 @@ const App = () => (
         </li>
       </ul>
     </header>
-    <Router />
-  </main>
+    <main className="main">
+      <Router />
+    </main>
+  </>
 );
 
 export default App;
