@@ -4,8 +4,8 @@ type SetState<T> = React.Dispatch<React.SetStateAction<T>>;
 
 type HandleChangeFn = (
   value: string,
-  setEmail: SetState<string>,
-  setEmailValid: SetState<boolean>,
+  set: SetState<string>,
+  setValid: SetState<boolean>,
   setCustomValidationMessage: SetState<string>,
 ) => void;
 
@@ -17,13 +17,24 @@ Validation Rules 📏
 - Email address must contain an '@' symbol separating local part and domain name.
 `;
 
+const RULES_PASSWORD_VALIDATION = `
+Password Validation Rules 📏
+- Password must be at least 8 characters long.
+- Password must contain at least one uppercase letter (A-Z).
+- Password must contain at least one lowercase letter (a-z).
+- Password must contain at least one digit (0-9).
+- Password must contain at least one special character (e.g., !@#$%^&\\*).
+- Password must not contain leading or trailing whitespace.
+`;
+
+const MIN_LENGTH_PASSWORD = 8;
+
 export const handleEmailChange: HandleChangeFn = (
   value,
   setEmail,
   setEmailValid,
   setCustomValidationMessage,
 ) => {
-  const trimmedValue = value.trim();
   const isValid = /^[^\s]+@[^\s]+\.[^\s]+$/.test(value);
 
   if (!isValid) {
@@ -32,14 +43,32 @@ export const handleEmailChange: HandleChangeFn = (
     setCustomValidationMessage('');
   }
 
-  setEmail(trimmedValue);
+  setEmail(value);
   setEmailValid(isValid);
 };
 
-export function isValidPassword(password: string): boolean {
-  let isPassword = false;
-  if (password) {
-    isPassword = true;
+export const handlePasswordChange: HandleChangeFn = (
+  value,
+  setPassword,
+  setPasswordValid,
+  setCustomValidationMessage,
+) => {
+  const isValid =
+    value.length >= MIN_LENGTH_PASSWORD &&
+    /^(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])\S.*\S$/.test(value);
+
+  if (!isValid) {
+    setCustomValidationMessage(RULES_PASSWORD_VALIDATION);
+  } else {
+    setCustomValidationMessage('');
   }
-  return isPassword;
-}
+  setPassword(value);
+  setPasswordValid(isValid);
+};
+
+export const handleSubmit = (e: React.FormEvent, emailValid: boolean, passwordValid: boolean) => {
+  if (!emailValid || !passwordValid) {
+    e.preventDefault();
+  }
+  // Здесь можно добавить код для отправки данных на сервер или другие действия
+};

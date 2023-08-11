@@ -1,23 +1,20 @@
 import React, { useState } from 'react';
-import { handleEmailChange } from '../../common/validation';
+import { handleEmailChange, handlePasswordChange, handleSubmit } from '../../common/validation';
 import '../../styles/registration.scss';
 
 const Registration = () => {
   const [email, setEmail] = useState('');
   const [emailValid, setEmailValid] = useState(true);
+  const [password, setPassword] = useState('');
+  const [passwordValid, setPasswordValid] = useState(true);
   const [customValidationMessage, setCustomValidationMessage] = useState('');
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!emailValid) {
-      /* empty */
-    }
-    // Здесь можно добавить код для отправки данных на сервер или другие действия
-  };
 
   return (
     <div className="registration">
-      <form className="registration__form row g-3" onSubmit={handleSubmit}>
+      <form
+        className="registration__form row g-3"
+        onSubmit={(e) => handleSubmit(e, emailValid, passwordValid)}
+      >
         <div className="col-md-6">
           <label htmlFor="inputEmail4" className="form-label">
             Email
@@ -46,7 +43,21 @@ const Registration = () => {
         <div className="col-md-6">
           <label htmlFor="inputPassword4" className="form-label">
             Password
-            <input type="password" className="form-control" id="inputPassword4" />
+            <input
+              type="password"
+              className={`form-control ${passwordValid ? '' : 'is-invalid'}`}
+              id="inputPassword4"
+              value={password}
+              onChange={(e) =>
+                handlePasswordChange(
+                  e.target.value,
+                  setPassword,
+                  setPasswordValid,
+                  setCustomValidationMessage,
+                )
+              }
+              title={customValidationMessage}
+            />
           </label>
         </div>
         <div className="col-12">
