@@ -10,4 +10,16 @@
     width: 50%;
     max-width: 900px;
   }
+
+  .password__input {
+    position: relative;
+    .form-control {
+      width: 100%;
+    }
+    .form-check-input {
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+  }
 }

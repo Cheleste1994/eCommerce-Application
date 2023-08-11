@@ -8,6 +8,11 @@ const Registration = () => {
   const [password, setPassword] = useState('');
   const [passwordValid, setPasswordValid] = useState(true);
   const [customValidationMessage, setCustomValidationMessage] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+
+  const toggleShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
 
   return (
     <div className="registration">
@@ -41,10 +46,10 @@ const Registration = () => {
           </label>
         </div>
         <div className="col-md-6">
-          <label htmlFor="inputPassword4" className="form-label">
+          <label htmlFor="inputPassword4" className="form-label password__input">
             Password
             <input
-              type="password"
+              type={showPassword ? 'text' : 'password'}
               className={`form-control ${passwordValid ? '' : 'is-invalid'}`}
               id="inputPassword4"
               value={password}
@@ -57,6 +62,13 @@ const Registration = () => {
                 )
               }
               title={customValidationMessage}
+            />
+            <input
+              type="checkbox"
+              className="form-check-input"
+              id="showPassword"
+              checked={showPassword}
+              onChange={toggleShowPassword}
             />
           </label>
         </div>
