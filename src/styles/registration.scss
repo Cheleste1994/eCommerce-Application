@@ -4,7 +4,6 @@
   justify-content: center;
   align-self: center;
   width: 100%;
-  min-height: 100vh;
 
   .registration__form {
     width: 50%;
@@ -20,6 +19,13 @@
       position: absolute;
       top: 0;
       right: 0;
+    }
+  }
+
+  .col-md-6 {
+    label {
+      max-width: 90%;
+      width: 100%;
     }
   }
 }

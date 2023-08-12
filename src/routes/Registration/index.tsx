@@ -72,7 +72,7 @@ const Registration = () => {
             />
           </label>
         </div>
-        <div className="col-12">
+        <div className="col-md-6">
           <label htmlFor="inputAddress" className="form-label">
             Address
             <input
@@ -80,17 +80,6 @@ const Registration = () => {
               className="form-control"
               id="inputAddress"
               placeholder="1234 Main St"
-            />
-          </label>
-        </div>
-        <div className="col-12">
-          <label htmlFor="inputAddress2" className="form-label">
-            Address 2
-            <input
-              type="text"
-              className="form-control"
-              id="inputAddress2"
-              placeholder="Apartment, studio, or floor"
             />
           </label>
         </div>
