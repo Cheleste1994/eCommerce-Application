@@ -1,4 +1,5 @@
 import React from 'react';
+import { getProject } from './createClienr';
 
 type SetState<T> = React.Dispatch<React.SetStateAction<T>>;
 
@@ -75,5 +76,6 @@ export const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
   };
 
   console.log(formDataObject);
+  console.log(getProject);
   e.preventDefault();
 };
