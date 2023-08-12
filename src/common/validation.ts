@@ -66,9 +66,14 @@ export const handlePasswordChange: HandleChangeFn = (
   setPasswordValid(isValid);
 };
 
-export const handleSubmit = (e: React.FormEvent, emailValid: boolean, passwordValid: boolean) => {
-  if (!emailValid || !passwordValid) {
-    e.preventDefault();
-  }
-  // Здесь можно добавить код для отправки данных на сервер или другие действия
+export const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const target = e.target as HTMLFormElement;
+  const formData = new FormData(target);
+  const formDataObject = {
+    email: formData.get('email'),
+    password: formData.get('password'),
+  };
+
+  console.log(formDataObject);
+  e.preventDefault();
 };

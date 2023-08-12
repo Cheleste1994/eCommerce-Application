@@ -16,15 +16,13 @@ const Registration = () => {
 
   return (
     <div className="registration">
-      <form
-        className="registration__form row g-3"
-        onSubmit={(e) => handleSubmit(e, emailValid, passwordValid)}
-      >
+      <form className="registration__form row g-3" onSubmit={handleSubmit}>
         <div className="col-md-6">
           <label htmlFor="inputEmail4" className="form-label">
             Email
             <input
               type="email"
+              name="email"
               className={`form-control ${emailValid ? '' : 'is-invalid'}`}
               id="inputEmail4"
               value={email}
@@ -49,6 +47,7 @@ const Registration = () => {
           <label htmlFor="inputPassword4" className="form-label password__input">
             Password
             <input
+              name="password"
               type={showPassword ? 'text' : 'password'}
               className={`form-control ${passwordValid ? '' : 'is-invalid'}`}
               id="inputPassword4"
