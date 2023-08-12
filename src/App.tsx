@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Router from './routes';
-import Login from './components/partials/login';
-import Cart from './components/partials/cart/index';
+import Login from './components/shareds/login';
+import Cart from './components/shareds/cart/index';
 import './styles/vendors.scss';
 
 const App = () => (
-  <main className="main">
+  <>
     <header className="header">
       <div className="title">
         <h1>7754.by</h1>
@@ -28,7 +28,9 @@ const App = () => (
         </div>
       </nav>
       <Login />
-      <Cart count={0} />
+      <div className="cart">
+        <Cart count={2} />
+      </div>
       <ul>
         <li>
           <Link to="/">Home</Link>
@@ -38,8 +40,10 @@ const App = () => (
         </li>
       </ul>
     </header>
-    <Router />
-  </main>
+    <main className="main">
+      <Router />
+    </main>
+  </>
 );
 
 export default App;

@@ -1,6 +1,6 @@
-// @import 'antd/dist/reset.css';
-// @import 'bootstrap/dist/css/bootstrap-reboot.css';
-// @import 'bootstrap/dist/css/bootstrap-grid.css';
+@import 'antd/dist/reset.css';
+@import 'bootstrap/dist/css/bootstrap-reboot.css';
+@import 'bootstrap/dist/css/bootstrap-grid.css';
 @import '@fontsource/roboto/300.css';
 @import '@fontsource/roboto/400.css';
 @import '@fontsource/roboto/500.css';
@@ -8,9 +8,22 @@
 
 @import 'bootstrap/scss/bootstrap';
 
-$primary-color: #dadada3a;
+$primary-color: #ffffff00;
 $title-color: #ff9100;
 $wrapper-padding: 20px;
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  .main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
 
 .header {
   display: flex;
@@ -22,6 +35,8 @@ $wrapper-padding: 20px;
   .title {
     display: flex;
     flex-direction: column;
+    cursor: pointer;
+
     * {
       margin: 0;
     }

@@ -1,0 +1,31 @@
+.registration {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  width: 100%;
+
+  .registration__form {
+    width: 50%;
+    max-width: 900px;
+  }
+
+  .password__input {
+    position: relative;
+    .form-control {
+      width: 100%;
+    }
+    .form-check-input {
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+  }
+
+  .col-md-6 {
+    label {
+      max-width: 90%;
+      width: 100%;
+    }
+  }
+}
