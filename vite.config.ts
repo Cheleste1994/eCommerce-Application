@@ -1,7 +1,6 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import eslint from 'vite-plugin-eslint';
-import rollupNodePolyFill from 'rollup-plugin-node-polyfills';
 import { NodeGlobalsPolyfillPlugin } from '@esbuild-plugins/node-globals-polyfill';
 import { NodeModulesPolyfillPlugin } from '@esbuild-plugins/node-modules-polyfill';
 
@@ -10,13 +9,13 @@ export default defineConfig({
   plugins: [eslint({ cache: false }), react()],
   resolve: {
     alias: {
-      stream: "rollup-plugin-node-polyfills/polyfills/stream",
+      stream: 'rollup-plugin-node-polyfills/polyfills/stream',
     },
   },
   optimizeDeps: {
     esbuildOptions: {
       define: {
-        global: "globalThis",
+        global: 'globalThis',
       },
       plugins: [
         NodeGlobalsPolyfillPlugin({
@@ -25,11 +24,6 @@ export default defineConfig({
         }),
         NodeModulesPolyfillPlugin(),
       ],
-    },
-  },
-  build: {
-    rollupOptions: {
-      plugins: [rollupNodePolyFill()],
     },
   },
 });
