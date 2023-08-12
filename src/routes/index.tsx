@@ -5,6 +5,7 @@ import { Routes, Route } from 'react-router-dom';
 import Home from './Home';
 
 const About = lazy(() => import('./About'));
+const Login = lazy(() => import('./Registration'));
 
 const Router: FunctionComponent = () => (
   <Routes>
@@ -14,6 +15,22 @@ const Router: FunctionComponent = () => (
       element={
         <Suspense fallback={<Spin />}>
           <About />
+        </Suspense>
+      }
+    />
+    <Route
+      path="registration"
+      element={
+        <Suspense fallback={<Spin />}>
+          <Login />
+        </Suspense>
+      }
+    />
+    <Route
+      path="reset"
+      element={
+        <Suspense fallback={<Spin />}>
+          <Login />
         </Suspense>
       }
     />

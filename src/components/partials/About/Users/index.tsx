@@ -43,7 +43,7 @@ const UserList = () => {
           Add new user
         </Button>
       </p>
-      <Table dataSource={userList} loading={usersStatus === ERequestStatus.LOADING}>
+      <Table dataSource={userList} loading={usersStatus === ERequestStatus.LOADING} rowKey="id">
         <Table.Column title="ID" dataIndex="id" key="id" />
         <Table.Column title="Created At" dataIndex="createdAt" key="createdAt" />
         <Table.Column title="Name" dataIndex="name" key="name" />
