@@ -1,5 +1,4 @@
 import React from 'react';
-import { getProject } from './createClienr';
 
 type SetState<T> = React.Dispatch<React.SetStateAction<T>>;
 
@@ -68,14 +67,14 @@ export const handlePasswordChange: HandleChangeFn = (
 };
 
 export const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
   const target = e.target as HTMLFormElement;
   const formData = new FormData(target);
   const formDataObject = {
-    email: formData.get('email'),
-    password: formData.get('password'),
+    email: formData.get('email') as string,
+    password: formData.get('password') as string,
+    firstName: formData.get('firstName') as string,
+    lastName: formData.get('lastName') as string,
   };
-
-  console.log(formDataObject);
-  console.log(getProject);
-  e.preventDefault();
+  return formDataObject;
 };

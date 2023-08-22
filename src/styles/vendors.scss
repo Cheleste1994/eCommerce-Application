@@ -32,6 +32,11 @@ $wrapper-padding: 20px;
   background-color: $primary-color;
   padding: $wrapper-padding;
 
+  .header__link-main {
+    text-decoration: none;
+    color: #000000;
+  }
+
   .title {
     display: flex;
     flex-direction: column;
