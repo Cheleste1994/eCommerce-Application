@@ -1,3 +1,4 @@
+import { createApiBuilderFromCtpClient } from '@commercetools/platform-sdk';
 import {
   ClientBuilder,
 
@@ -6,17 +7,16 @@ import {
   type HttpMiddlewareOptions, // Required for sending HTTP requests
 } from '@commercetools/sdk-client-v2';
 
-// eslint-disable-next-line import/prefer-default-export
-const projectKey = 'ea';
-const scopes = ['manage_project:ea'];
+const projectKey = `${import.meta.env.VITE_CTP_PROJECT_KEY}`;
+const scopes = [`manage_project:${import.meta.env.VITE_CTP_PROJECT_KEY}`];
 
 // Configure authMiddlewareOptions
 const authMiddlewareOptions: AuthMiddlewareOptions = {
   host: 'https://auth.europe-west1.gcp.commercetools.com',
   projectKey,
   credentials: {
-    clientId: 'J4iph4OhCAtwQt39DNxeCAHG',
-    clientSecret: 'tpJPQejDFBuEcHHMiRP22sEU7-FeKXKR',
+    clientId: `${import.meta.env.VITE_CTP_CLIENT_ID}`,
+    clientSecret: `${import.meta.env.VITE_CTP_CLIENT_SECRET}`,
   },
   scopes,
   fetch,
@@ -30,10 +30,13 @@ const httpMiddlewareOptions: HttpMiddlewareOptions = {
 
 // Export the ClientBuilder
 const ctpClient = new ClientBuilder()
-  .withProjectKey(projectKey)
   .withClientCredentialsFlow(authMiddlewareOptions)
   .withHttpMiddleware(httpMiddlewareOptions)
-  .withLoggerMiddleware()
+  // .withLoggerMiddleware()
   .build();
 
-export default ctpClient;
+const apiRootClient = createApiBuilderFromCtpClient(ctpClient).withProjectKey({
+  projectKey: `${import.meta.env.VITE_CTP_PROJECT_KEY}`,
+});
+
+export default apiRootClient;
