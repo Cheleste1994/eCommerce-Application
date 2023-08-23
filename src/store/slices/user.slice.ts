@@ -35,12 +35,23 @@ export const customerToken = createAsyncThunk('user/token', async (body: Custome
 export const userSlice = createSlice({
   name: 'user',
   initialState,
-  reducers: {},
+  reducers: {
+    logout: (state) => {
+      localStorage.setItem('token', '');
+      return {
+        ...state,
+        isToken: false,
+        isLogin: false,
+        loginResult: null,
+      };
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(login.fulfilled, (state, action) => ({
       ...state,
       status: ERequestStatus.SUCCEEDED,
       isToken: true,
+      isLogin: true,
       loginResult: { ...state.loginResult, ...action.payload },
     }));
   },
@@ -50,5 +61,7 @@ export const selectSignInResult = (state: RootState) => state.users.loginResult;
 export const selectIsAuth = (state: RootState) => state.users.isToken;
 export const selectIsLogin = (state: RootState) => state.users.isLogin;
 export const selectStatus = (state: RootState) => state.users.status;
+
+export const { logout } = userSlice.actions;
 
 export default userSlice.reducer;

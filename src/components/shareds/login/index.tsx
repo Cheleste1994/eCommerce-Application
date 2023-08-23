@@ -3,7 +3,7 @@ import 'bootstrap/dist/js/bootstrap.bundle.min';
 import { Link, useNavigate } from 'react-router-dom';
 import { handleEmailChange, handleSubmit } from '../../../common/validation';
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
-import { login, customerToken, selectSignInResult } from '../../../store/slices/user.slice';
+import { login, customerToken, selectSignInResult, logout } from '../../../store/slices/user.slice';
 
 const Login = ({ isLogin }: { isLogin: boolean }) => {
   const [email, setEmail] = useState('');
@@ -101,9 +101,8 @@ const Login = ({ isLogin }: { isLogin: boolean }) => {
           <form
             className="dropdown-menu p-5"
             onSubmit={(e) => {
+              dispatch(logout());
               handleSubmit(e);
-              localStorage.setItem('token', '');
-              navigate('/');
             }}
           >
             <div>{`Email: ${signInResult?.email}`}</div>

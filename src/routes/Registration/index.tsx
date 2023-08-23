@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { handleEmailChange, handlePasswordChange, handleSubmit } from '../../common/validation';
-import { useAppDispatch } from '../../store/hooks';
-import { createCustomer, customerToken, login } from '../../store/slices/user.slice';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import { createCustomer, customerToken, login, selectIsLogin } from '../../store/slices/user.slice';
 import '../../styles/registration.scss';
 
 const Registration = () => {
@@ -14,10 +14,17 @@ const Registration = () => {
   const [showPassword, setShowPassword] = useState(false);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const isLogin = useAppSelector(selectIsLogin);
 
   const toggleShowPassword = () => {
     setShowPassword(!showPassword);
   };
+
+  useEffect(() => {
+    if (isLogin) {
+      navigate('/');
+    }
+  }, [isLogin, navigate]);
 
   return (
     <div className="registration">
@@ -30,7 +37,6 @@ const Registration = () => {
             if (create.payload) {
               await dispatch(customerToken(body));
               await dispatch(login());
-              navigate('/');
             }
           }
         }}
