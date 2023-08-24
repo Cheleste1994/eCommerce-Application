@@ -3,12 +3,14 @@ import { Spin } from 'antd';
 import { Routes, Route } from 'react-router-dom';
 
 import Home from './Home';
+import Catalog from './Catalog';
 
 const Login = lazy(() => import('./Registration'));
 
 const Router: FunctionComponent = () => (
   <Routes>
     <Route path="/" element={<Home />} />
+    <Route path="catalog" element={<Catalog />} />
     <Route
       path="registration"
       element={
