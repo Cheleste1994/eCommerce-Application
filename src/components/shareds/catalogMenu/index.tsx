@@ -3,8 +3,18 @@ import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useAppDispatch, useAppSelector } from '../../../store/hooks';
+import {
+  getClientCategories,
+  getClientCategoriesWithId,
+  getClientProducts,
+  selectCategories,
+} from '../../../store/slices/products.slice';
 
 export default function CatalogMenu() {
+  const dispatch = useAppDispatch();
+  const categories = useAppSelector(selectCategories);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -12,10 +22,27 @@ export default function CatalogMenu() {
   };
   const navigate = useNavigate();
 
-  const handleClose = () => {
+  const handleClose = (ID?: string) => {
+    if (ID) {
+      dispatch(getClientCategoriesWithId(ID));
+    } else {
+      dispatch(getClientProducts());
+    }
     setAnchorEl(null);
     navigate('/catalog');
   };
+
+  useEffect(() => {
+    if (!categories) {
+      dispatch(getClientCategories());
+    }
+  }, [dispatch, categories]);
+
+  const categoriesArray = categories?.results.map((cat) => (
+    <MenuItem key={cat.id} onClick={() => handleClose(cat.id)}>
+      {cat.name['en-US']}
+    </MenuItem>
+  ));
 
   return (
     <div className="header__catalog">
@@ -26,20 +53,19 @@ export default function CatalogMenu() {
         aria-expanded={open ? 'true' : undefined}
         onClick={handleClick}
       >
-        Catalog
+        Menu
       </Button>
       <Menu
         id="basic-menu"
         anchorEl={anchorEl}
         open={open}
-        onClose={handleClose}
+        onClose={() => handleClose()}
         MenuListProps={{
           'aria-labelledby': 'basic-button',
         }}
       >
-        <MenuItem onClick={handleClose}>Audio</MenuItem>
-        <MenuItem onClick={handleClose}>Video</MenuItem>
-        <MenuItem onClick={handleClose}>All products</MenuItem>
+        {categoriesArray}
+        <MenuItem onClick={() => handleClose()}>All products</MenuItem>
       </Menu>
     </div>
   );
